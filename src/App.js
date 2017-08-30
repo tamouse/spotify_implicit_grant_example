@@ -1,21 +1,22 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+    constructor(props) {
+        super(props)
+        this.state = {
+            credentials: props.credentials
+        }
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <h1>Yay, logged in!</h1>
+                <textarea rows="20" cols="60" defaultValue={JSON.stringify(this.state.credentials,null,2)} />
+            </div>
+        );
+    }
 }
 
 export default App;

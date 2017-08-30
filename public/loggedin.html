@@ -4,8 +4,11 @@
     <title>Spotify Logged In</title>
 </head>
 <body>
-    <h1>Spotify authorized login</h1>
     <script>
+
+        // Instead of trying to do things with parsing out the values with regular expressions,
+        // this is a far simpler way of decomposing either the hash fragment returned on sucesss
+        // from Spotify, or the query string / search part returned on a login failure
         function parse(s) {
             var vars = s.split('&');
             var parsed = {};
@@ -13,14 +16,21 @@
                 var pair = vars[i].split('=');
                 parsed[pair[0]] = pair[1];
             }
-            alert(parsed);
             return parsed;
         }
-        var hash = window.location.hash.substring(1)
+
+        let hash = window.location.hash.substring(1);
         if (hash) {
+            // the Hash part is not empty, so we assume it's a success
             entries = parse(hash);
-            console.log(entries);
+
+            // This sets the spotifyEntries global variable in the window that opened the login windown
+            // See the Window.opener documentation in MDN
             window.opener.spotifyEntries = entries;
+        } else {
+            // the Hash part was empty, so try the Search part
+            let search = window.location.search.substring(1);
+            window.opener.spotifyEntries = parse(search);
         }
     </script>
 </body>
