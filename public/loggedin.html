@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <title>Spotify Logged In</title>
+</head>
+<body>
+    <h1>Spotify authorized login</h1>
+    <script>
+        function parse(s) {
+            var vars = s.split('&');
+            var parsed = {};
+            for(var i=0; i < vars.length; i++) {
+                var pair = vars[i].split('=');
+                parsed[pair[0]] = pair[1];
+            }
+            alert(parsed);
+            return parsed;
+        }
+        var hash = window.location.hash.substring(1)
+        if (hash) {
+            entries = parse(hash);
+            console.log(entries);
+            window.opener.spotifyEntries = entries;
+        }
+    </script>
+</body>
+</html>

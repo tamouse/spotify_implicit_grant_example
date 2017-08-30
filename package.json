@@ -1,0 +1,23 @@
+{
+  "name": "spotify_implicit_grant_example",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "devDependencies": {
+    "react-scripts": "1.0.12"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "description": "A sample app showing Spotify Implicit Grant Flow handling using a pop-up window",
+  "main": "src/index.js",
+  "repository": "git@github.com:tamouse/spotify_implicit_grant_example.git",
+  "author": "Tamara Temple <tamouse@gmail.com>",
+  "license": "MIT"
+}
